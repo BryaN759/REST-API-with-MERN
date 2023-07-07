@@ -7,7 +7,7 @@ const User = require('../models/userModels');
 // @route   POST /api/users
 // @desc    register new user 
 // @access  Public
-const registerUser = asyncHandler(async (req,res) =>{
+const registerCompany = asyncHandler(async (req,res) =>{
     const { name, email, password } = req.body;
 
     if(!name || !email || !password){
@@ -42,7 +42,7 @@ const registerUser = asyncHandler(async (req,res) =>{
 // @route   POST /api/users/login
 // @desc    Authenticate a user 
 // @access  Public
-const loginUser = asyncHandler(async (req,res) =>{
+const loginCompany = asyncHandler(async (req,res) =>{
     const { email, password } = req.body
 
     // Check for user email
@@ -63,7 +63,7 @@ const loginUser = asyncHandler(async (req,res) =>{
 // @route   GET /api/users/me
 // @desc    get user data 
 // @access  Private
-const getMe = asyncHandler(async (req,res) =>{
+const postedJobs = asyncHandler(async (req,res) =>{
     // res.json({ message : 'User data'})
 
     const { _id, name, email } = await User.findById(req.user.id)
@@ -85,7 +85,7 @@ const generateToken = (id) => {
 }
 
 module.exports = {
-    registerUser,
-    loginUser,
-    getMe,
+    registerCompany,
+    loginCompany,
+    postedJobs,
 }
